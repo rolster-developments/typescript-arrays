@@ -25,11 +25,11 @@ return a new collection (or value) instead.
 
 ### Querying
 
-| Function                | Description                                                  |
-| ----------------------- | ------------------------------------------------------------ |
-| `inArray(array, value)` | Returns `true` when `value` is contained in `array`.         |
-| `first(array)`          | Returns the first element, or `null` when the array is empty.|
-| `last(array)`           | Returns the last element, or `null` when the array is empty. |
+| Function                | Description                                                   |
+| ----------------------- | ------------------------------------------------------------- |
+| `inArray(array, value)` | Returns `true` when `value` is contained in `array`.          |
+| `first(array)`          | Returns the first element, or `null` when the array is empty. |
+| `last(array)`           | Returns the last element, or `null` when the array is empty.  |
 
 ```typescript
 import { inArray, first, last } from '@rolster/arrays';
@@ -45,12 +45,12 @@ last([]); // null
 
 ### Immutable mutations
 
-| Function                          | Description                                                            |
-| --------------------------------- | ---------------------------------------------------------------------- |
-| `push(array, element)`            | Returns a new array with `element` appended.                           |
-| `refresh(array, element, fn)`     | Replaces every element matching the `fn` criteria with `element`.      |
-| `destroy(array, fn)`              | Removes every element matching the `fn` criteria.                      |
-| `remove(array, index)`            | Removes the element located at `index`.                                |
+| Function                      | Description                                                       |
+| ----------------------------- | ----------------------------------------------------------------- |
+| `push(array, element)`        | Returns a new array with `element` appended.                      |
+| `refresh(array, element, fn)` | Replaces every element matching the `fn` criteria with `element`. |
+| `destroy(array, fn)`          | Removes every element matching the `fn` criteria.                 |
+| `remove(array, index)`        | Removes the element located at `index`.                           |
 
 ```typescript
 import { push, refresh, destroy, remove } from '@rolster/arrays';
@@ -103,11 +103,7 @@ results.
 import { reduceDistinct } from '@rolster/arrays';
 
 reduceDistinct(
-  [
-    { city: 'Bogotá' },
-    { city: 'Medellín' },
-    { city: 'Bogotá' }
-  ],
+  [{ city: 'Bogotá' }, { city: 'Medellín' }, { city: 'Bogotá' }],
   (item) => item.city
 );
 // ['Bogotá', 'Medellín']
