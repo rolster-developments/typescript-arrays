@@ -1,6 +1,6 @@
 {
   "name": "@rolster/arrays",
-  "version": "3.1.2",
+  "version": "4.0.0",
   "type": "module",
   "description": "Utility package for manipulating Array compatible with Typescript projects.",
   "license": "MIT",
@@ -29,18 +29,18 @@
   ],
   "scripts": {
     "prettier": "prettier --write .",
-    "clean": "rimraf ./dist",
-    "build": "npm run clean && tsc -p tsconfig.app.json && rollup -c rollup.config.mjs",
-    "test": "vitest run",
-    "prepublishOnly": "npm run build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc -p tsconfig.app.json && rolster-rollup",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@rolster/rollup": "^2.1.1",
+    "@rolster/rollup": "^2.2.0",
     "@rolster/types": "^1.1.1",
-    "@vitest/ui": "^4.1.8",
+    "@vitest/ui": "^5.0.0",
     "eslint": "^10.7.0",
     "eslint-plugin-perfectionist": "^5.10.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
@@ -50,7 +50,7 @@
     "tslib": "^2.4.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.64.0",
-    "vitest": "^4.1.8"
+    "vitest": "^5.0.0"
   },
   "repository": {
     "type": "git",

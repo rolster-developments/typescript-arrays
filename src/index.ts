@@ -1,10 +1,10 @@
-type EachCallback = <T>(element: T, index: number) => Undefined<boolean>;
-type EachError = <T>(element: T, index: number) => void;
+type ForEachCallback = <T>(element: T, index: number) => boolean | void;
+type ForEachError = <T>(element: T, index: number) => void;
 
-interface ArrayEachOptions<T> {
+interface ForEachOptions<T> {
   array: T[];
-  fnEach: EachCallback;
-  catchError?: EachError;
+  callback: ForEachCallback;
+  catchError?: ForEachError;
 }
 
 interface MapOptions<E, V> {
@@ -58,8 +58,8 @@ export function remove<T>(array: T[], index: number): T[] {
   return array.filter((_, currentIndex) => index !== currentIndex);
 }
 
-export function each<T>(options: ArrayEachOptions<T>): boolean {
-  const { array, fnEach, catchError } = options;
+export function forEach<T>(options: ForEachOptions<T>): boolean {
+  const { array, callback: fnEach, catchError } = options;
 
   try {
     array.forEach((element, index) => {
