@@ -20,8 +20,10 @@ You must install the `@rolster/types` to define package data types, which are co
 
 ## Features
 
-All helpers are pure functions: they never mutate the array you pass in, they
-return a new collection (or value) instead.
+None of the helpers mutate the array you pass in: they return a new collection
+(or value) instead. The one thing to keep in mind is `mapToReduce`, whose
+`reducer` callback is expected to mutate the accumulated _value_ it receives
+(never the input array).
 
 ### Querying
 
@@ -75,17 +77,20 @@ remove(users, 0);
 
 ### Iteration with break
 
-`each` behaves like `Array.prototype.forEach`, but returning `true` from the
+`forEach` behaves like `Array.prototype.forEach`, but returning `true` from the
 callback breaks the loop early. It returns `false` when the loop was broken
-(and invokes `catchError` with the element that broke it) or `true` when it ran
-to completion.
+(and invokes `catchError` with the element and index that broke it) or `true`
+when it ran to completion.
+
+It receives a single options object with the shape
+`{ array: T[]; callback: (element, index) => boolean | void; catchError?: (element, index) => void }`.
 
 ```typescript
-import { each } from '@rolster/arrays';
+import { forEach } from '@rolster/arrays';
 
-const completed = each({
+const completed = forEach({
   array: [1, 2, 3, 4],
-  fnEach: (value) => value === 3, // break on 3
+  callback: (value) => value === 3, // break on 3
   catchError: (value, index) => {
     console.log(`stopped at index ${index} with value ${value}`);
   }
@@ -110,7 +115,10 @@ reduceDistinct(
 ```
 
 `mapToReduce` groups elements by an identifier and merges every element that
-shares the same identifier into a single value.
+shares the same identifier into a single value. Its options object has the shape
+`{ identifier: (element) => string; elementToValue: (element) => V; reducer: (element, value: V) => void }`:
+`elementToValue` creates the accumulated value the first time an identifier is
+seen, and `reducer` mutates that value with each element.
 
 ```typescript
 import { mapToReduce } from '@rolster/arrays';
