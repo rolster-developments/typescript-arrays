@@ -141,4 +141,4 @@ mapToReduce(lines, {
 
 ## Contributing
 
-- Daniel Andrés Castillo Pedroza :rocket:
+:sparkles: Daniel Andrés Castillo Pedroza
