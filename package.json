@@ -1,6 +1,6 @@
 {
   "name": "@rolster/arrays",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "type": "module",
   "description": "Utility package for manipulating Array compatible with Typescript projects.",
   "license": "MIT",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@rolster/rollup": "^3.0.0",
-    "@rolster/types": "^1.1.1",
+    "@rolster/types": "^1.2.0",
     "eslint": "^10.7.0",
     "eslint-plugin-perfectionist": "^5.10.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
